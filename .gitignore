@@ -1,0 +1,27 @@
+# Python / MicroPython local artifacts
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# Virtual environments
+.venv/
+venv/
+
+# Local config and secrets
+.env
+*.env
+wifi_config.json
+secrets.py
+
+# Logs and captured data
+*.log
+*.csv
+*.db
+buffer.txt
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+

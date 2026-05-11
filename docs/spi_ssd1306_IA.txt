@@ -1,0 +1,57 @@
+#include <SPI.h>
+#include <Adafruit_GFX.h>
+#include <Adafruit_SSD1306.h>
+
+// Lista de GPIOs possíveis para CS, DC e RESET
+int candidatePins[] = {5, 4, 0, 2, 14, 12, 13, 15}; 
+// D1=5, D2=4, D3=0, D4=2, D5=14, D6=12, D7=13, D8=15
+
+#define OLED_MOSI   D7   // GPIO13 (fixo)
+#define OLED_CLK    D5   // GPIO14 (fixo)
+
+// Objeto display será criado dinamicamente
+Adafruit_SSD1306 *display;
+
+void setup() {
+  Serial.begin(115200);
+  delay(1000);
+  Serial.println("\nIniciando teste OLED SPI...");
+
+  // Testa todas as combinações possíveis de CS, DC e RESET
+  for (int i = 0; i < 8; i++) {
+    for (int j = 0; j < 8; j++) {
+      for (int k = 0; k < 8; k++) {
+        int cs = candidatePins[i];
+        int dc = candidatePins[j];
+        int rst = candidatePins[k];
+
+        Serial.printf("\nTestando CS=GPIO%d, DC=GPIO%d, RESET=GPIO%d\n", cs, dc, rst);
+
+        // Cria objeto display com esta combinação
+        display = new Adafruit_SSD1306(128, 64, &SPI, dc, rst, cs);
+
+        if (display->begin(SSD1306_SWITCHCAPVCC)) {
+          Serial.println("Display inicializado com sucesso!");
+          display->clearDisplay();
+          display->setTextSize(1);
+          display->setTextColor(SSD1306_WHITE);
+          display->setCursor(0,0);
+          display->println("OLED SPI OK!");
+          display->display();
+          delay(3000);
+          return; // encerra após encontrar uma combinação válida
+        } else {
+          Serial.println("Falha nesta combinacao.");
+        }
+
+        delete display; // libera memória antes de tentar próxima
+      }
+    }
+  }
+
+  Serial.println("\nNenhuma combinacao funcionou.");
+}
+
+void loop() {
+  // Nada aqui, teste é feito no setup()
+}
