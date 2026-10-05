@@ -17,6 +17,7 @@ Scripts em MicroPython para Raspberry Pi Pico/RP2040, usados com Thonny.
 - PWM/ADC: `src/pwm_test_rp2040.py`, `src/pwm_plotter_rp2040.py`
 - Analisador de pulso: `src/pulse_analyzer_rp2040.py`
 - Osciloscopio simples: `src/oscilloscope_rp2040.py`
+- ATtiny85 ISP via RP2040: `src/attiny_isp_signature_rp2040.py`, `src/attiny_isp_inspector_rp2040.py`, `src/attiny_isp_flash_writer_rp2040.py`
 - Tracador de curvas: `src/tracer_rp2040.py`, `src/transistor_tracer_rp2040.py`
 - Display/OLED/Nokia/Matrix: `src/display.py`, `src/oled2864.py`, `src/nokia5110_pcd8544_test.py`, `src/matrix8x8_bitbang.py`
 - GPS/Bluetooth/RFID: `src/gps.py`, `src/bluetooth_test.py`, `src/rfid.py`
@@ -31,3 +32,4 @@ Scripts em MicroPython para Raspberry Pi Pico/RP2040, usados com Thonny.
 
 Ver `docs/RP2040_THONNY_CONTEXT.md` para pinagens recorrentes, cuidados de edicao e mapa dos scripts.
 
+Notas do fluxo ATtiny85 ISP ficam em `docs/attiny_isp_rp2040_notes.md`.
